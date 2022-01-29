@@ -36,6 +36,24 @@ public class Meal {
         dinner.add(food);
     }
 
+    //MODIFIES: this
+    //EFFECTS: delete the given food from the breakfast
+    public void deleteBreakfast(Food food) {
+        breakfast.remove(food);
+    }
+
+    //MODIFIES: this
+    //EFFECTS: delete the given food from the lunch
+    public void deleteLunch(Food food) {
+        lunch.remove(food);
+    }
+
+    //MODIFIES: this
+    //EFFECTS: delete the given food from the dinner
+    public void deleteDinner(Food food) {
+        dinner.remove(food);
+    }
+
     //EFFECTS: return the total calories consumed in the day combined from breakfast + lunch + dinner
     public int totalDayCalories() {
 
@@ -46,11 +64,9 @@ public class Meal {
         for (Food f : breakfast) {
             b = b + f.totalCalories();
         }
-
         for (Food f : lunch) {
             l = l + f.totalCalories();
         }
-
         for (Food f : dinner) {
             d = d + f.totalCalories();
         }
@@ -65,15 +81,12 @@ public class Meal {
         int l = 0;
         int d = 0;
 
-
         for (Food f : breakfast) {
             b = b + f.getCarbs();
         }
-
         for (Food f : lunch) {
             l = l + f.getCarbs();
         }
-
         for (Food f : dinner) {
             d = d + f.getCarbs();
         }
@@ -88,22 +101,18 @@ public class Meal {
         int l = 0;
         int d = 0;
 
-
         for (Food f : breakfast) {
             b = b + f.getProtein();
         }
-
         for (Food f : lunch) {
             l = l + f.getProtein();
         }
-
         for (Food f : dinner) {
             d = d + f.getProtein();
         }
 
         return b + l + d;
     }
-
 
     //MODIFIES: this
     //EFFECTS: returns total fats as of the day/meal
@@ -112,20 +121,32 @@ public class Meal {
         int l = 0;
         int d = 0;
 
-
         for (Food f : breakfast) {
             b = b + f.getFats();
         }
-
         for (Food f : lunch) {
             l = l + f.getFats();
         }
-
         for (Food f : dinner) {
             d = d + f.getFats();
         }
 
         return b + l + d;
+    }
+
+    //EFFECTS: return size of List<Food> breakfast
+    public int breakfastSize() {
+        return breakfast.size();
+    }
+
+    //EFFECTS: return size of List<Food> lunch
+    public int lunchSize() {
+        return lunch.size();
+    }
+
+    //EFFECTS: return size of List<Food> dinner
+    public int dinnerSize() {
+        return dinner.size();
     }
 
 

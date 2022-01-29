@@ -15,9 +15,9 @@ public class FoodTest {
     @BeforeEach
 
     public void runBefore() {
-        f1 = new Food(23,32,12);
-        f2 = new Food(10,42,21);
-        f3 = new Food(12,32,9);
+        f1 = new Food("Chicken Breast",23,32,12);
+        f2 = new Food("McDonald's Junior Meal",10,42,21);
+        f3 = new Food("French Egg Omelette",12,32,9);
     }
 
     @Test
