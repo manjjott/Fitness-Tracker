@@ -16,7 +16,7 @@ public class MealTest {
 
     public void runBefore() {
         meal = new Meal();
-        f1 = new Food("Chicken Breast",23,32,12);
+        f1 = new Food("Chicken Breast",20,12,13);
         f2 = new Food("McDonald's Junior Meal",10,42,21);
         f3 = new Food("French Egg Omelette",12,32,9);
     }
@@ -96,13 +96,13 @@ public class MealTest {
         assertEquals(1,meal.breakfastSize());
         assertEquals(1,meal.lunchSize());
         assertEquals(1,meal.dinnerSize());
-        assertEquals(804, meal.totalDayCalories());
+        assertEquals(540, meal.totalDayCalories());
 
         meal.addLunch(f2);
         meal.addDinner(f3);
         assertEquals(2,meal.lunchSize());
         assertEquals(2,meal.dinnerSize());
-        assertEquals(1308, meal.totalDayCalories());
+        assertEquals(1044, meal.totalDayCalories());
 
     }
 
@@ -116,12 +116,12 @@ public class MealTest {
         assertEquals(1,meal.breakfastSize());
         assertEquals(1,meal.lunchSize());
         assertEquals(1,meal.dinnerSize());
-        assertEquals(45,meal.totalDayCarbs());
+        assertEquals(42,meal.totalDayCarbs());
 
         meal.addLunch(f3);
         assertEquals(2,meal.lunchSize());
 
-        assertEquals(57,meal.totalDayCarbs());
+        assertEquals(54,meal.totalDayCarbs());
 
     }
 
@@ -135,12 +135,12 @@ public class MealTest {
         assertEquals(1,meal.breakfastSize());
         assertEquals(1,meal.lunchSize());
         assertEquals(1,meal.dinnerSize());
-        assertEquals(106,meal.totalDayProtein());
+        assertEquals(86,meal.totalDayProtein());
 
         meal.addLunch(f3);
         assertEquals(2,meal.lunchSize());
 
-        assertEquals(138,meal.totalDayProtein());
+        assertEquals(118,meal.totalDayProtein());
 
     }
 
@@ -154,12 +154,12 @@ public class MealTest {
         assertEquals(1,meal.breakfastSize());
         assertEquals(1,meal.lunchSize());
         assertEquals(1,meal.dinnerSize());
-        assertEquals(42,meal.totalDayFats());
+        assertEquals(43,meal.totalDayFats());
 
         meal.addLunch(f3);
         assertEquals(2,meal.lunchSize());
 
-        assertEquals(51,meal.totalDayFats());
+        assertEquals(52,meal.totalDayFats());
     }
 
 }

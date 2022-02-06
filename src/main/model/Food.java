@@ -31,6 +31,7 @@ public class Food {
         return this.fats;
     }
 
+
     //EFFECTS: return total calories
     public int totalCalories() {
         return this.carbohydrates * 4 + this.protein * 4 + this.fats * 4;

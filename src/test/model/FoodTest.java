@@ -15,7 +15,7 @@ public class FoodTest {
     @BeforeEach
 
     public void runBefore() {
-        f1 = new Food("Chicken Breast",23,32,12);
+        f1 = new Food("Chicken Breast",20,12,13);
         f2 = new Food("McDonald's Junior Meal",10,42,21);
         f3 = new Food("French Egg Omelette",12,32,9);
     }
@@ -23,7 +23,7 @@ public class FoodTest {
     @Test
 
     public void testTotalCalories() {
-        assertEquals(268, f1.totalCalories());
+        assertEquals(180, f1.totalCalories());
         assertEquals(292,f2.totalCalories());
         assertEquals(212,f3.totalCalories());
     }
@@ -31,7 +31,7 @@ public class FoodTest {
     @Test
 
     public void testTotalMacros() {
-        assertEquals(67,f1.totalMacros());
+        assertEquals(45,f1.totalMacros());
         assertEquals(73, f2.totalMacros());
         assertEquals(53, f3.totalMacros());
     }

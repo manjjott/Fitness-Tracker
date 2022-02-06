@@ -9,6 +9,7 @@ public class Meal {
     private List<Food> lunch;
     private List<Food> dinner;
 
+
     //EFFECT: constructs a day's meal; with breakfast , lunch and dinner lists
     public Meal() {
 
@@ -16,12 +17,14 @@ public class Meal {
         lunch = new ArrayList<>();
         dinner = new ArrayList<>();
 
+
     }
 
     //MODIFIES: this
     //EFFECTS: add the given food in the List<Food> breakfast;
     public void addBreakfast(Food food) {
         breakfast.add(food);
+
     }
 
     //MODIFIES: this
@@ -46,6 +49,7 @@ public class Meal {
     //EFFECTS: delete the given food from the lunch
     public void deleteLunch(Food food) {
         lunch.remove(food);
+
     }
 
     //MODIFIES: this
