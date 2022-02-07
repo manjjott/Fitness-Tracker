@@ -153,5 +153,20 @@ public class Meal {
         return dinner.size();
     }
 
+    //EFFECTS: returns the list of breakfast
+    public List<Food> getBreakfastList() {
+        return breakfast;
+    }
+
+    //EFFECTS: returns the list of lunch
+    public List<Food> getLunchList() {
+        return lunch;
+    }
+
+    //EFFECTS: returns the list of dinner
+    public List<Food> getDinnerList() {
+        return dinner;
+    }
+
 
 }
