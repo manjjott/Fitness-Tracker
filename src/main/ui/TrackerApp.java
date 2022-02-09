@@ -173,7 +173,7 @@ public class TrackerApp {
 
         Food toBeRemoved = new Food("name", 1, 2, 3);
 
-        for (Food food : meal.getBreakfastList()) {
+        for (Food food : meal.getLunchList()) {
             if (food.getTitle().equals(name)) {
                 contains = true;
                 toBeRemoved = food;
@@ -234,7 +234,7 @@ public class TrackerApp {
 
         Food toBeRemoved = new Food("name", 1, 2, 3);
 
-        for (Food food : meal.getBreakfastList()) {
+        for (Food food : meal.getDinnerList()) {
             if (food.getTitle().equals(name)) {
                 contains = true;
                 toBeRemoved = food;
