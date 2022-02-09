@@ -32,7 +32,7 @@ public class FoodTest {
 
     public void testGetTitle() {
         assertEquals("Salted Chicken Breast",f1.getTitle());
-        assertEquals("McDoanld's Junior Meal",f2.getTitle());
+        assertEquals("McDonald's Junior Meal",f2.getTitle());
         assertEquals("French Egg Omelette",f3.getTitle());
     }
 }
