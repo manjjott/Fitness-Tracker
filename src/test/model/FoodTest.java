@@ -27,4 +27,12 @@ public class FoodTest {
         assertEquals(292,f2.totalCalories());
         assertEquals(212,f3.totalCalories());
     }
+
+    @Test
+
+    public void testGetTitle() {
+        assertEquals("Salted Chicken Breast",f1.getTitle());
+        assertEquals("McDoanld's Junior Meal",f2.getTitle());
+        assertEquals("French Egg Omelette",f3.getTitle());
+    }
 }
