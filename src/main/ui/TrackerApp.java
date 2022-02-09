@@ -36,28 +36,19 @@ public class TrackerApp {
     //MODIFIES: this
     //EFFECTS: processes user command
     private void processCommand(String command) {
-        if (command.equals("b")) {
-            addBreakfast();
-        } else if (command.equals("db")) {
-            deleteBreakfast();
-        } else if (command.equals("cb")) {
-            checkBreakfast();
-        } else if (command.equals("l")) {
-            addLunch();
-        } else if (command.equals("dl")) {
-            deleteLunch();
-        } else if (command.equals("cl")) {
-            checkLunch();
-        } else if (command.equals("d")) {
-            addDinner();
-        } else if (command.equals("dd")) {
-            deleteDinner();
-        } else if (command.equals("cd")) {
-            checkDinner();
-        } else if (command.equals("c")) {
-            checkCalories();
-        } else if (command.equals("e")) {
-            System.out.println(" Good Bye ! Have a nice day !");
+        switch (command) {
+            case "b" -> addBreakfast();
+            case "db" -> deleteBreakfast();
+            case "cb" -> checkBreakfast();
+            case "l" -> addLunch();
+            case "dl" -> deleteLunch();
+            case "cl" -> checkLunch();
+            case "d" -> addDinner();
+            case "dd" -> deleteDinner();
+            case "cd" -> checkDinner();
+            case "c" -> checkCalories();
+            case "e" -> System.out.println(" Good Bye ! Have a nice day !");
+            default -> selectionNotValid();
         }
     }
 
@@ -194,7 +185,7 @@ public class TrackerApp {
     private void checkLunch() {
         for (Food food : meal.getLunchList()) {
             System.out.println(" Name : " + food.getTitle() + " Carbohydrates : " + food.getCarbs() + " Protein : "
-                            + " Fats :" + food.getFats());
+                    + " Fats :" + food.getFats());
         }
         runTracker();
     }
@@ -268,6 +259,12 @@ public class TrackerApp {
         System.out.println(" Carbohydrates : " + meal.totalDayCarbs());
         System.out.println(" Proteins : " + meal.totalDayProtein());
         System.out.println(" Fats : " + meal.totalDayFats());
+        runTracker();
+    }
+
+    //EFFECTS: case where user does not enter the right commands
+    private void selectionNotValid() {
+        System.out.println("Selection not valid...");
         runTracker();
     }
 
