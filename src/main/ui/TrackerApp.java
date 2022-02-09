@@ -31,7 +31,6 @@ public class TrackerApp {
         input = new Scanner(System.in);
         String command = input.nextLine();
         processCommand(command);
-
     }
 
     //MODIFIES: this
@@ -262,10 +261,13 @@ public class TrackerApp {
     }
 
     // MODIFIES: this
-    // EFFECTS: check the cumulative calories from the all meals
+    // EFFECTS: check the cumulative calories from the all meals and total Macros
     private void checkCalories() {
         System.out.println("You ate " + meal.totalDayCalories() + " calories today ! ");
-
+        System.out.println("Total Macros :");
+        System.out.println(" Carbohydrates : " + meal.totalDayCarbs());
+        System.out.println(" Proteins : " + meal.totalDayProtein());
+        System.out.println(" Fats : " + meal.totalDayFats());
         runTracker();
     }
 
