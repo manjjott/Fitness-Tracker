@@ -162,4 +162,38 @@ public class MealTest {
         assertEquals(52,meal.totalDayFats());
     }
 
+    @Test
+
+    public void testGetBreakfastList() {
+        meal.addBreakfast(f1);
+        meal.addBreakfast(f2);
+        meal.addBreakfast(f3);
+
+        assertEquals(3,meal.getBreakfastList().size());
+    }
+
+    @Test
+
+    public void testGetLunchList() {
+
+        meal.addLunch(f1);
+        meal.addLunch(f2);
+        meal.addLunch(f3);
+
+        assertEquals(3,meal.getLunchList().size());
+
+    }
+
+    @Test
+
+    public void testGetDinnerList() {
+
+        meal.addDinner(f1);
+        meal.addDinner(f2);
+        meal.addDinner(f3);
+
+        assertEquals(3,meal.getDinnerList().size());
+
+    }
+
 }
