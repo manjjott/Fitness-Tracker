@@ -15,6 +15,5 @@ people to track their daily intake on the daily basis. This project interests me
 <li>As a user should be able to <strong> add food </strong> into breakfast, lunch and dinner list. </li>
 <li> As a user should be able to <strong> delete food </strong> from breakfast, lunch and dinner list. </li>
 <li>As a user should be able to <strong> check my daily calories </strong>.</li>
-<li>As a user should be check my <strong> daily macros </strong>.</li>
 <li>As a user should be able to <strong> view my breakfast, lunch and dinner list </strong>.</li>
 </ol>

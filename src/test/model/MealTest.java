@@ -16,7 +16,7 @@ public class MealTest {
 
     public void runBefore() {
         meal = new Meal();
-        f1 = new Food("Chicken Breast",20,12,13);
+        f1 = new Food("Salted Chicken Breast",20,12,13);
         f2 = new Food("McDonald's Junior Meal",10,42,21);
         f3 = new Food("French Egg Omelette",12,32,9);
     }

@@ -15,32 +15,31 @@ public class Food {
         this.title = title;
     }
 
+    //EFFECTS: returns food title
     public String getTitle() {
         return this.title;
     }
 
+    //EFFECTS: returns carbohydrates
     public int getCarbs() {
         return this.carbohydrates;
     }
 
+    //EFFECTS: returns protein
     public int getProtein() {
         return this.protein;
     }
 
+    //EFFECTS: returns fats
     public int getFats() {
         return this.fats;
     }
-
 
     //EFFECTS: return total calories
     public int totalCalories() {
         return this.carbohydrates * 4 + this.protein * 4 + this.fats * 4;
     }
 
-    //EFFECTS: returns total grams of carbs, protein, fats in g
-    public int totalMacros() {
-        return carbohydrates + protein + fats;
-    }
 }
 
 

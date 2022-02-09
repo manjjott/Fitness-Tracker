@@ -13,6 +13,7 @@ public class TrackerApp {
 
     //EFFECTS: run the tracker application
     public TrackerApp() {
+        meal = new Meal();
         welcome();
         runTracker();
     }
@@ -20,7 +21,7 @@ public class TrackerApp {
 
     //EFFECTS : prints out the welcome statement
     private void welcome() {
-        System.out.println(" Welcome ! to your Calorie and Meal tracker");
+        System.out.println(" Welcome !! to your Calorie and Meal tracker !!!");
     }
 
     //MODIFIES: this
@@ -40,16 +41,20 @@ public class TrackerApp {
             addBreakfast();
         } else if (command.equals("db")) {
             deleteBreakfast();
+        } else if (command.equals("cb")) {
+            checkBreakfast();
         } else if (command.equals("l")) {
             addLunch();
         } else if (command.equals("dl")) {
             deleteLunch();
+        } else if (command.equals("cl")) {
+            checkLunch();
         } else if (command.equals("d")) {
             addDinner();
         } else if (command.equals("dd")) {
             deleteDinner();
-        } else if (command.equals("m")) {
-            checkMacros();
+        } else if (command.equals("cd")) {
+            checkDinner();
         } else if (command.equals("c")) {
             checkCalories();
         } else if (command.equals("e")) {
@@ -63,8 +68,10 @@ public class TrackerApp {
         System.out.println("\tb -> Breakfast");
         System.out.println("\tl -> Lunch");
         System.out.println("\td -> Dinner");
+        System.out.println("\tcb -> Check Breakfast");
+        System.out.println("\tcl -> Check Lunch");
+        System.out.println("\tcd -> Check Dinner");
         System.out.println("\tc -> Check Calories");
-        System.out.println("\tm -> Check Macros");
         System.out.println("\tdb -> Delete Breakfast");
         System.out.println("\tdl -> Delete Lunch");
         System.out.println("\tdd -> Delete Dinner");
@@ -87,8 +94,9 @@ public class TrackerApp {
         int fats;
         System.out.println("Fats :");
         fats = input.nextInt();
-        Food food = new Food(name, carbohydrates, protein, fats);
-        meal.addBreakfast(food);
+
+        Food f = new Food(name, carbohydrates, protein, fats);
+        meal.addBreakfast(f);
 
         runTracker();
 
@@ -116,11 +124,21 @@ public class TrackerApp {
         if (!contains) {
             System.out.println("Error: Food entered is not in the list");
         } else {
+
             meal.deleteBreakfast(toBeRemoved);
         }
 
         runTracker();
 
+    }
+
+    // EFFECTS: checks the food in the breakfast list
+    private void checkBreakfast() {
+        for (Food food : meal.getBreakfastList()) {
+            System.out.println(" Name : " + food.getTitle() + " Carbohydrates : " + food.getCarbs() + " Protein : "
+                    + " Fats :" + food.getFats());
+        }
+        runTracker();
     }
 
     // MODIFIES: this
@@ -166,11 +184,20 @@ public class TrackerApp {
         if (!contains) {
             System.out.println("Error: Food entered is not in the list");
         } else {
-            meal.deleteBreakfast(toBeRemoved);
+            meal.deleteLunch(toBeRemoved);
         }
 
         runTracker();
 
+    }
+
+    // EFFECTS: checks the food in the lunch list
+    private void checkLunch() {
+        for (Food food : meal.getLunchList()) {
+            System.out.println(" Name : " + food.getTitle() + " Carbohydrates : " + food.getCarbs() + " Protein : "
+                            + " Fats :" + food.getFats());
+        }
+        runTracker();
     }
 
 
@@ -218,27 +245,28 @@ public class TrackerApp {
         if (!contains) {
             System.out.println("Error: Food entered is not in the list");
         } else {
-            meal.deleteBreakfast(toBeRemoved);
+            meal.deleteDinner(toBeRemoved);
         }
 
         runTracker();
 
     }
 
+    // EFFECTS: checks the food in the dinner list
+    private void checkDinner() {
+        for (Food food : meal.getDinnerList()) {
+            System.out.println(" Name : " + food.getTitle() + " Carbohydrates : " + food.getCarbs() + " Protein : "
+                    + " Fats :" + food.getFats());
+        }
+        runTracker();
+    }
+
     // MODIFIES: this
     // EFFECTS: check the cumulative calories from the all meals
     private void checkCalories() {
-        System.out.println("You ate " + meal.totalDayCalories() + "calories today !");
+        System.out.println("You ate " + meal.totalDayCalories() + " calories today ! ");
+
         runTracker();
     }
-
-    // MODIFIES: this
-    // EFFECTS: check the macro tracking in the meals eaten so far
-    private void checkMacros() {
-        System.out.println("\nYou ate: " + meal.totalDayCarbs()
-                + meal.totalDayFats() + meal.totalDayProtein());
-        runTracker();
-    }
-
 
 }
