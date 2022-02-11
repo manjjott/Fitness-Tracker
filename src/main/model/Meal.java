@@ -17,7 +17,6 @@ public class Meal {
         lunch = new ArrayList<>();
         dinner = new ArrayList<>();
 
-
     }
 
     //MODIFIES: this
