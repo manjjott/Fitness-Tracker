@@ -35,7 +35,6 @@ public class TrackerApp {
 
     //MODIFIES: this
     //EFFECTS: processes user command
-    @SuppressWarnings("checkstyle:methodlength")
     private void processCommand(String command) {
         if (command.equals("b")) {
             addBreakfast();
@@ -59,9 +58,6 @@ public class TrackerApp {
             checkCalories();
         } else if (command.equals("e")) {
             System.out.println(" Good Bye ! Have a nice day !");
-        } else {
-            System.out.println("Selection not valid...");
-            runTracker();
         }
     }
 
