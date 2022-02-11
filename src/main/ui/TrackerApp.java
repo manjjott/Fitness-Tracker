@@ -35,7 +35,7 @@ public class TrackerApp {
 
     //MODIFIES: this
     //EFFECTS: processes user command
-    @SuppressWarnings({"MethodLength", "checkstyle:SuppressWarnings"})
+   // @SuppressWarnings({"MethodLength", "checkstyle:SuppressWarnings"})
     private void processCommand(String command) {
         if (command.equals("b")) {
             addBreakfast();
@@ -47,7 +47,13 @@ public class TrackerApp {
             addLunch();
         } else if (command.equals("dl")) {
             deleteLunch();
-        } else if (command.equals("cl")) {
+        } else {
+            continuedProcessCommand(command);
+        }
+    }
+
+    public void continuedProcessCommand(String command) {
+        if (command.equals("cl")) {
             checkLunch();
         } else if (command.equals("d")) {
             addDinner();
@@ -59,7 +65,7 @@ public class TrackerApp {
             checkCalories();
         } else if (command.equals("e")) {
             System.out.println(" Good Bye ! Have a nice day !");
-        } else {
+        }  else {
             System.out.println("Selection not valid....");
             runTracker();
         }
