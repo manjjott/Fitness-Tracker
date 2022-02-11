@@ -35,6 +35,7 @@ public class TrackerApp {
 
     //MODIFIES: this
     //EFFECTS: processes user command
+    @SuppressWarnings({"MethodLength", "checkstyle:SuppressWarnings"})
     private void processCommand(String command) {
         if (command.equals("b")) {
             addBreakfast();
@@ -58,6 +59,9 @@ public class TrackerApp {
             checkCalories();
         } else if (command.equals("e")) {
             System.out.println(" Good Bye ! Have a nice day !");
+        } else {
+            System.out.println("Selection not valid....");
+            runTracker();
         }
     }
 
@@ -133,9 +137,13 @@ public class TrackerApp {
 
     // EFFECTS: checks the food in the breakfast list
     private void checkBreakfast() {
-        for (Food food : meal.getBreakfastList()) {
-            System.out.println(" Name : " + food.getTitle() + " Carbohydrates : " + food.getCarbs() + " Protein : "
-                    + " Fats :" + food.getFats());
+        if (!meal.getBreakfastList().isEmpty()) {
+            for (Food food : meal.getBreakfastList()) {
+                System.out.println(" Name : " + food.getTitle() + " Carbohydrates : " + food.getCarbs() + " Protein : "
+                        + " Fats :" + food.getFats());
+            }
+        } else {
+            System.out.println("Breakfast list is empty !");
         }
         runTracker();
     }
@@ -185,16 +193,18 @@ public class TrackerApp {
         } else {
             meal.deleteLunch(toBeRemoved);
         }
-
         runTracker();
-
     }
 
     // EFFECTS: checks the food in the lunch list
     private void checkLunch() {
-        for (Food food : meal.getLunchList()) {
-            System.out.println(" Name : " + food.getTitle() + " Carbohydrates : " + food.getCarbs() + " Protein : "
-                    + " Fats :" + food.getFats());
+        if (!meal.getLunchList().isEmpty()) {
+            for (Food food : meal.getLunchList()) {
+                System.out.println(" Name : " + food.getTitle() + " Carbohydrates : " + food.getCarbs() + " Protein : "
+                        + " Fats :" + food.getFats());
+            }
+        } else {
+            System.out.println("Lunch list is empty !");
         }
         runTracker();
     }
@@ -219,7 +229,6 @@ public class TrackerApp {
         Food food = new Food(name, carbohydrates, protein, fats);
         meal.addDinner(food);
         runTracker();
-
     }
 
     // MODIFIES: this
@@ -246,16 +255,18 @@ public class TrackerApp {
         } else {
             meal.deleteDinner(toBeRemoved);
         }
-
         runTracker();
-
     }
 
     // EFFECTS: checks the food in the dinner list
     private void checkDinner() {
-        for (Food food : meal.getDinnerList()) {
-            System.out.println(" Name : " + food.getTitle() + " Carbohydrates : " + food.getCarbs() + " Protein : "
-                    + " Fats :" + food.getFats());
+        if (!meal.getDinnerList().isEmpty()) {
+            for (Food food : meal.getDinnerList()) {
+                System.out.println(" Name : " + food.getTitle() + " Carbohydrates : " + food.getCarbs() + " Protein : "
+                        + " Fats :" + food.getFats());
+            }
+        } else {
+            System.out.println("Dinner list is empty !");
         }
         runTracker();
     }
