@@ -35,7 +35,6 @@ public class TrackerApp {
 
     //MODIFIES: this
     //EFFECTS: processes user command
-   // @SuppressWarnings({"MethodLength", "checkstyle:SuppressWarnings"})
     private void processCommand(String command) {
         if (command.equals("b")) {
             addBreakfast();
@@ -52,6 +51,7 @@ public class TrackerApp {
         }
     }
 
+    //EFFECTS: processes command for the user
     public void continuedProcessCommand(String command) {
         if (command.equals("cl")) {
             checkLunch();
