@@ -1,6 +1,9 @@
 package model;
 
-public class Food {
+import org.json.JSONObject;
+import persistence.Writable;
+
+public class Food implements Writable {
     private int carbohydrates;
     private int protein;
     private int fats;
@@ -41,6 +44,18 @@ public class Food {
     public int totalCalories() {
         return this.carbohydrates * 4 + this.protein * 4 + this.fats * 4;
     }
+
+    @Override
+
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("title", title);
+        json.put("carbohydrates", carbohydrates);
+        json.put("proteins", protein);
+        json.put("fats", fats);
+        return json;
+    }
+
 
 }
 

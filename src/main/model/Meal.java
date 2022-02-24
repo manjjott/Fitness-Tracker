@@ -1,9 +1,13 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class Meal {
+public class Meal implements Writable {
 
     private List<Food> breakfast;
     private List<Food> lunch;
@@ -12,18 +16,15 @@ public class Meal {
 
     //EFFECT: constructs a day's meal; with breakfast , lunch and dinner lists
     public Meal() {
-
         breakfast = new ArrayList<>();
         lunch = new ArrayList<>();
         dinner = new ArrayList<>();
-
     }
 
     //MODIFIES: this
     //EFFECTS: add the given food in the List<Food> breakfast;
     public void addBreakfast(Food food) {
         breakfast.add(food);
-
     }
 
     //MODIFIES: this
@@ -166,6 +167,50 @@ public class Meal {
     public List<Food> getDinnerList() {
         return dinner;
     }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("breakfast", thingiesToJsonOne());
+        json.put("lunch", thingiesToJsonTwo());
+        json.put("dinner", thingiesToJsonThree());
+        return json;
+    }
+
+
+    //EFFECTS: returns the lists as a JSON array
+    private JSONArray thingiesToJsonOne() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Food b : breakfast) {
+            jsonArray.put(b.toJson());
+        }
+
+        return jsonArray;
+    }
+
+    //EFFECTS: returns the lists as a JSON array
+    private JSONArray thingiesToJsonTwo() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Food l : lunch) {
+            jsonArray.put(l.toJson());
+        }
+
+        return jsonArray;
+    }
+
+    //EFFECTS: returns the lists as a JSON array
+    private JSONArray thingiesToJsonThree() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Food l : dinner) {
+            jsonArray.put(l.toJson());
+        }
+
+        return jsonArray;
+    }
+
 
 
 }

@@ -2,18 +2,27 @@ package ui;
 
 import model.Food;
 import model.Meal;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 //Food Intake Tracker
 public class TrackerApp {
+    private static final String JSON_STORE = "./data/meal.json";
     private Meal meal;
     private Scanner input;
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
 
     //EFFECTS: run the tracker application
     public TrackerApp() {
         meal = new Meal();
+        jsonReader = new JsonReader(JSON_STORE);
+        jsonWriter = new JsonWriter(JSON_STORE);
         welcome();
         runTracker();
     }
@@ -65,7 +74,11 @@ public class TrackerApp {
             checkCalories();
         } else if (command.equals("e")) {
             System.out.println(" Good Bye ! Have a nice day !");
-        }  else {
+        }  else if (command.equals("save")) {
+            saveMeal();
+        } else if (command.equals("load")) {
+            loadMeal();
+        } else {
             System.out.println("Selection not valid....");
             runTracker();
         }
@@ -84,6 +97,8 @@ public class TrackerApp {
         System.out.println("\tdb -> Delete Breakfast");
         System.out.println("\tdl -> Delete Lunch");
         System.out.println("\tdd -> Delete Dinner");
+        System.out.println("\tsave -> Save Meal");
+        System.out.println("\tload -> Load Meal");
         System.out.println("\te -> Exit");
     }
 
@@ -286,6 +301,32 @@ public class TrackerApp {
         System.out.println(" Proteins : " + meal.totalDayProtein());
         System.out.println(" Fats : " + meal.totalDayFats());
         runTracker();
+    }
+
+
+    //EFFECTS: save the meal to file
+    private void saveMeal() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(meal);
+            jsonWriter.close();
+            System.out.println("Saved " + meal + " to " + JSON_STORE + "!");
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE + "!");
+        }
+        runTracker();
+    }
+
+    //EFFECTS: load the meal to file
+    private void loadMeal() {
+        try {
+            meal = jsonReader.read();
+            System.out.println("Loaded " + meal + " from " + JSON_STORE + "!");
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE + "!");
+        }
+        runTracker();
+
     }
 
 }

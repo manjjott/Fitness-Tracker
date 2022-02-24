@@ -1,0 +1,20 @@
+{
+  "lunch": [{
+    "carbohydrates": 1,
+    "fats": 1,
+    "proteins": 1,
+    "title": "l"
+  }],
+  "breakfast": [{
+    "carbohydrates": 1,
+    "fats": 1,
+    "proteins": 1,
+    "title": "b"
+  }],
+  "dinner": [{
+    "carbohydrates": 1,
+    "fats": 1,
+    "proteins": 1,
+    "title": "d"
+  }]
+}
