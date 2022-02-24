@@ -42,29 +42,29 @@ public class JsonReader {
     // EFFECTS: parses meal from JSON object and returns it
     private Meal parseMeal(JSONObject jsonObject) {
         Meal m = new Meal();
-        addThingies(m, jsonObject);
+        addFoods(m, jsonObject);
         return m;
     }
 
     // MODIFIES: m
     // EFFECTS: parses food from JSON object and adds them to meal
-    private void addThingies(Meal m, JSONObject jsonObject) {
+    private void addFoods(Meal m, JSONObject jsonObject) {
         JSONArray jsonArrayOne = jsonObject.getJSONArray("breakfast");
         JSONArray jsonArrayTwo = jsonObject.getJSONArray("lunch");
         JSONArray jsonArrayThree = jsonObject.getJSONArray("dinner");
         for (Object json : jsonArrayOne) {
-            JSONObject nextThingy = (JSONObject) json;
-            addFoodOne(m, nextThingy);
+            JSONObject nextFood = (JSONObject) json;
+            addFoodOne(m, nextFood);
         }
 
         for (Object json : jsonArrayTwo) {
-            JSONObject nextThingy = (JSONObject) json;
-            addFoodTwo(m, nextThingy);
+            JSONObject nextFood = (JSONObject) json;
+            addFoodTwo(m, nextFood);
         }
 
         for (Object json : jsonArrayThree) {
-            JSONObject nextThingy = (JSONObject) json;
-            addFoodThree(m, nextThingy);
+            JSONObject nextFood = (JSONObject) json;
+            addFoodThree(m, nextFood);
         }
 
     }
