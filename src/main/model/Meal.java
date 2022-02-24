@@ -178,7 +178,7 @@ public class Meal implements Writable {
     }
 
 
-    //EFFECTS: returns the lists as a JSON array
+    //EFFECTS: returns the breakfast list as a JSON array
     private JSONArray thingiesToJsonOne() {
         JSONArray jsonArray = new JSONArray();
 
@@ -189,7 +189,7 @@ public class Meal implements Writable {
         return jsonArray;
     }
 
-    //EFFECTS: returns the lists as a JSON array
+    //EFFECTS: returns the lunch list as a JSON array
     private JSONArray thingiesToJsonTwo() {
         JSONArray jsonArray = new JSONArray();
 
@@ -200,7 +200,7 @@ public class Meal implements Writable {
         return jsonArray;
     }
 
-    //EFFECTS: returns the lists as a JSON array
+    //EFFECTS: returns the dinner list as a JSON array
     private JSONArray thingiesToJsonThree() {
         JSONArray jsonArray = new JSONArray();
 

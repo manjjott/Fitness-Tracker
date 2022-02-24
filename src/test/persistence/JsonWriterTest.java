@@ -27,12 +27,12 @@ public class JsonWriterTest extends JsonTest {
     void testWriterEmptyWorkroom() {
         try {
             Meal m = new Meal();
-            JsonWriter writer = new JsonWriter("./data/testWriterEmptyWorkroom.json");
+            JsonWriter writer = new JsonWriter("./data/testWriterEmptyMeal.json");
             writer.open();
             writer.write(m);
             writer.close();
 
-            JsonReader reader = new JsonReader("./data/testWriterEmptyWorkroom.json");
+            JsonReader reader = new JsonReader("./data/testWriterEmptyMeal.json");
             m = reader.read();
             assertEquals(0, m.getBreakfastList().size());
             assertEquals(0, m.getLunchList().size());
@@ -49,12 +49,12 @@ public class JsonWriterTest extends JsonTest {
             m.addBreakfast(new Food("b", 1,1,1));
             m.addLunch(new Food("l",1,1,1));
             m.addDinner(new Food("d",1,1,1));
-            JsonWriter writer = new JsonWriter("./data/testWriterGeneralWorkroom.json");
+            JsonWriter writer = new JsonWriter("./data/testWriterGeneralMeal.json");
             writer.open();
             writer.write(m);
             writer.close();
 
-            JsonReader reader = new JsonReader("./data/testWriterGeneralWorkroom.json");
+            JsonReader reader = new JsonReader("./data/testWriterGeneralMeal.json");
             m = reader.read();
             List<Food> breakfastList = m.getBreakfastList();
             assertEquals(1, m.breakfastSize());

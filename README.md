@@ -17,3 +17,11 @@ people to track their daily intake on the daily basis. This project interests me
 <li>As a user should be able to <strong> check my daily calories </strong>.</li>
 <li>As a user should be able to <strong> view my breakfast, lunch and dinner list </strong>.</li>
 </ol>
+
+## **User stories (Phase 2)**:
+<ol>
+<li>As a user I should be able to <strong>save food</strong> as the breakfast, lunch and dinner list.</li>
+<li>As a user I should be able to <strong>load food</strong> as the breakfast, lunch and dinner list.</li>
+</ol>
+
+

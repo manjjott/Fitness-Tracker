@@ -47,6 +47,7 @@ public class Food implements Writable {
 
     @Override
 
+    //EFFECTS: make the Json object
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("title", title);
