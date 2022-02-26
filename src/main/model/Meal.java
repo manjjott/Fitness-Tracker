@@ -171,15 +171,15 @@ public class Meal implements Writable {
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
-        json.put("breakfast", thingiesToJsonOne());
-        json.put("lunch", thingiesToJsonTwo());
-        json.put("dinner", thingiesToJsonThree());
+        json.put("breakfast", foodToJsonBreakfast());
+        json.put("lunch", foodToJsonLunch());
+        json.put("dinner", foodToJsonDinner());
         return json;
     }
 
 
     //EFFECTS: returns the breakfast list as a JSON array
-    private JSONArray thingiesToJsonOne() {
+    private JSONArray foodToJsonBreakfast() {
         JSONArray jsonArray = new JSONArray();
 
         for (Food b : breakfast) {
@@ -190,7 +190,7 @@ public class Meal implements Writable {
     }
 
     //EFFECTS: returns the lunch list as a JSON array
-    private JSONArray thingiesToJsonTwo() {
+    private JSONArray foodToJsonLunch() {
         JSONArray jsonArray = new JSONArray();
 
         for (Food l : lunch) {
@@ -201,7 +201,7 @@ public class Meal implements Writable {
     }
 
     //EFFECTS: returns the dinner list as a JSON array
-    private JSONArray thingiesToJsonThree() {
+    private JSONArray foodToJsonDinner() {
         JSONArray jsonArray = new JSONArray();
 
         for (Food l : dinner) {

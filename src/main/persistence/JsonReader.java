@@ -54,24 +54,24 @@ public class JsonReader {
         JSONArray jsonArrayThree = jsonObject.getJSONArray("dinner");
         for (Object json : jsonArrayOne) {
             JSONObject nextFood = (JSONObject) json;
-            addFoodOne(m, nextFood);
+            addFoodBreakfast(m, nextFood);
         }
 
         for (Object json : jsonArrayTwo) {
             JSONObject nextFood = (JSONObject) json;
-            addFoodTwo(m, nextFood);
+            addFoodLunch(m, nextFood);
         }
 
         for (Object json : jsonArrayThree) {
             JSONObject nextFood = (JSONObject) json;
-            addFoodThree(m, nextFood);
+            addFooDinner(m, nextFood);
         }
 
     }
 
     // MODIFIES: m
     // EFFECTS: parses food from JSON object and adds it to meal
-    private void addFoodOne(Meal m, JSONObject jsonObject) {
+    private void addFoodBreakfast(Meal m, JSONObject jsonObject) {
         String title = jsonObject.getString("title");
         int carbohydrates = jsonObject.getInt("carbohydrates");
         int proteins = jsonObject.getInt("proteins");
@@ -84,7 +84,7 @@ public class JsonReader {
 
     // MODIFIES: m
     // EFFECTS: parses food from JSON object and adds it to meal
-    private void addFoodTwo(Meal m, JSONObject jsonObject) {
+    private void addFoodLunch(Meal m, JSONObject jsonObject) {
         String title = jsonObject.getString("title");
         int carbohydrates = jsonObject.getInt("carbohydrates");
         int proteins = jsonObject.getInt("proteins");
@@ -97,7 +97,7 @@ public class JsonReader {
 
     // MODIFIES: m
     // EFFECTS: parses food from JSON object and adds it to meal
-    private void addFoodThree(Meal m, JSONObject jsonObject) {
+    private void addFooDinner(Meal m, JSONObject jsonObject) {
         String title = jsonObject.getString("title");
         int carbohydrates = jsonObject.getInt("carbohydrates");
         int proteins = jsonObject.getInt("proteins");
