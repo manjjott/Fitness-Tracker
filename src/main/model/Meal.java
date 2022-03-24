@@ -168,6 +168,39 @@ public class Meal implements Writable {
         return dinner;
     }
 
+    //EFFECTS: check whether food in the breakfast list
+    public boolean containBreakfastFood(String str) {
+        for (Food f : breakfast) {
+            if (f.getTitle().equals(str)) {
+
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    //EFFECTS: check whether food in the lunch list
+    public boolean containLunchFood(String str) {
+        for (Food f : lunch) {
+            if (f.getTitle().equals(str)) {
+
+                return true;
+            }
+        }
+        return false;
+    }
+
+    //EFFECTS: check whether food in the dinner list
+    public boolean containDinnerFood(String str) {
+        for (Food f : dinner) {
+            if (f.getTitle().equals(str)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
@@ -210,7 +243,6 @@ public class Meal implements Writable {
 
         return jsonArray;
     }
-
 
 
 }

@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class MealTest {
     private Meal meal;
@@ -184,16 +185,36 @@ public class MealTest {
 
     }
 
+
+
     @Test
 
-    public void testGetDinnerList() {
+    public void testContainsBreakfastFood() {
+        meal.addBreakfast(f1);
+        assertEquals(1,meal.breakfastSize());
 
+        assertTrue(meal.containBreakfastFood("Salted Chicken Breast"));
+
+    }
+
+
+    @Test
+
+    public void testContainsLunchFood() {
+        meal.addLunch(f1);
+        assertEquals(1,meal.lunchSize());
+
+        assertTrue(meal.containLunchFood("Salted Chicken Breast"));
+    }
+
+
+    @Test
+
+    public void testContainsDinnerFood() {
         meal.addDinner(f1);
-        meal.addDinner(f2);
-        meal.addDinner(f3);
+        assertEquals(1,meal.dinnerSize());
 
-        assertEquals(3,meal.getDinnerList().size());
-
+        assertTrue(meal.containDinnerFood("Salted Chicken Breast"));
     }
 
 }
