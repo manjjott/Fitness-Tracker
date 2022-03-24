@@ -3,8 +3,7 @@ package model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class MealTest {
     private Meal meal;
@@ -194,6 +193,7 @@ public class MealTest {
         assertEquals(1,meal.breakfastSize());
 
         assertTrue(meal.containBreakfastFood("Salted Chicken Breast"));
+        assertFalse(meal.containBreakfastFood("Salted Chicken Breast  "));
 
     }
 
@@ -205,6 +205,7 @@ public class MealTest {
         assertEquals(1,meal.lunchSize());
 
         assertTrue(meal.containLunchFood("Salted Chicken Breast"));
+        assertFalse(meal.containLunchFood("Salted Chicken Breast  "));
     }
 
 
@@ -215,6 +216,7 @@ public class MealTest {
         assertEquals(1,meal.dinnerSize());
 
         assertTrue(meal.containDinnerFood("Salted Chicken Breast"));
+        assertFalse(meal.containDinnerFood("Salted Chicken Breast  "));
     }
 
 }
