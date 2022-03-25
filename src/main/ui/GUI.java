@@ -6,6 +6,7 @@ import persistence.JsonReader;
 import persistence.JsonWriter;
 
 import javax.swing.*;
+import javax.swing.JFrame;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,8 +20,8 @@ import java.util.List;
 public class GUI implements ActionListener {
 
     private Meal meal;
-    private JPanel panel;
-    private JFrame frame;
+    private JPanel jpanel;
+    private JFrame jframe;
     private JTextField title;
     private JTextField carbohydrates;
     private JTextField proteins;
@@ -29,22 +30,44 @@ public class GUI implements ActionListener {
     private static final String JSON_STORE = "./data/meal.json";
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
+    private ImageIcon imageIcon;
 
+
+    //EFFECTS: constructs panel, frame and buttons for the GUI
     public GUI() {
-
         meal = new Meal();
-        panel = new JPanel();
-        frame = new JFrame("My Fitness Calculator");
-        frame.add(panel);
-        frame.setSize(500, 500);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        jpanel = new JPanel();
+        jpanel.setBackground(Color.BLACK);
+        JLabel background = new JLabel();
+        background.setIcon(panelImage());
+        background.setBounds(250, 100, 200, 200);
+        jpanel.add(background);
+        jframe = new JFrame("My Fitness Calculator");
+        jframe.add(jpanel);
+        jframe.setSize(500, 500);
+        jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         back = new JButton("Back");
         back.setActionCommand("back");
         back.addActionListener(this);
         button();
         jsonReader = new JsonReader(JSON_STORE);
         jsonWriter = new JsonWriter(JSON_STORE);
-        frame.setVisible(true);
+        jframe.setVisible(true);
+        imageIcon = new ImageIcon("balanced-diet.png");
+        Image image = imageIcon.getImage();
+        Image img = image.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+        imageIcon = new ImageIcon(img);
+
+
+    }
+
+    //EFFECTS: gives the intro image on the introductory panel
+    private ImageIcon panelImage() {
+        ImageIcon calculator = new ImageIcon("calculator.png");
+        Image image1 = calculator.getImage();
+        Image img1 = image1.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
+        calculator = new ImageIcon(img1);
+        return calculator;
     }
 
 
@@ -53,13 +76,23 @@ public class GUI implements ActionListener {
         JButton saveMeal = new JButton("Save Meal");
         JButton loadMeal = new JButton("Load Meal");
 
+        saveMeal.setBounds(100, 370, 120, 35);
+        loadMeal.setBounds(100, 410, 120, 35);
+        saveMeal.setBackground(Color.CYAN);
+        saveMeal.setOpaque(true);
+        loadMeal.setBackground(Color.CYAN);
+        loadMeal.setOpaque(true);
+
+
         saveMeal.setActionCommand("save");
         saveMeal.addActionListener(this);
         loadMeal.setActionCommand("load");
         loadMeal.addActionListener(this);
 
-        panel.add(saveMeal);
-        panel.add(loadMeal);
+
+        jpanel.add(saveMeal);
+        jpanel.add(loadMeal);
+        jpanel.setLayout(null);
     }
 
     //EFFECTS: creates the jButton for check food
@@ -68,6 +101,17 @@ public class GUI implements ActionListener {
         JButton checkLunch = new JButton("Check Lunch");
         JButton checkDinner = new JButton("Check Dinner");
 
+
+        checkBreakfast.setBounds(100, 250, 120, 35);
+        checkLunch.setBounds(100, 290, 120, 35);
+        checkDinner.setBounds(100, 330, 120, 35);
+        checkBreakfast.setBackground(Color.CYAN);
+        checkLunch.setBackground(Color.CYAN);
+        checkDinner.setBackground(Color.CYAN);
+        checkBreakfast.setOpaque(true);
+        checkLunch.setOpaque(true);
+        checkDinner.setOpaque(true);
+
         checkBreakfast.setActionCommand("check Breakfast");
         checkBreakfast.addActionListener(this);
         checkLunch.setActionCommand("check Lunch");
@@ -75,9 +119,11 @@ public class GUI implements ActionListener {
         checkDinner.setActionCommand("check Dinner");
         checkDinner.addActionListener(this);
 
-        panel.add(checkBreakfast);
-        panel.add(checkLunch);
-        panel.add(checkDinner);
+
+        jpanel.add(checkBreakfast);
+        jpanel.add(checkLunch);
+        jpanel.add(checkDinner);
+        jpanel.setLayout(null);
     }
 
     //EFFECTS: create the jButton for delete food
@@ -86,6 +132,16 @@ public class GUI implements ActionListener {
         JButton deleteLunch = new JButton("Delete Lunch");
         JButton deleteDinner = new JButton("Delete Dinner");
 
+        deleteBreakfast.setBounds(100, 130, 120, 35);
+        deleteLunch.setBounds(100, 170, 120, 35);
+        deleteDinner.setBounds(100, 210, 120, 35);
+        deleteBreakfast.setBackground(Color.CYAN);
+        deleteLunch.setBackground(Color.CYAN);
+        deleteDinner.setBackground(Color.CYAN);
+        deleteBreakfast.setOpaque(true);
+        deleteLunch.setOpaque(true);
+        deleteDinner.setOpaque(true);
+
         deleteBreakfast.setActionCommand("delete Breakfast");
         deleteBreakfast.addActionListener(this);
         deleteLunch.setActionCommand("delete Lunch");
@@ -93,9 +149,11 @@ public class GUI implements ActionListener {
         deleteDinner.setActionCommand("delete Dinner");
         deleteDinner.addActionListener(this);
 
-        panel.add(deleteBreakfast);
-        panel.add(deleteLunch);
-        panel.add(deleteDinner);
+
+        jpanel.add(deleteBreakfast);
+        jpanel.add(deleteLunch);
+        jpanel.add(deleteDinner);
+        jpanel.setLayout(null);
 
     }
 
@@ -105,6 +163,17 @@ public class GUI implements ActionListener {
         JButton addLunch = new JButton("Add Lunch");
         JButton addDinner = new JButton("Add Dinner");
 
+        addBreakFast.setBounds(100, 10, 120, 35);
+        addLunch.setBounds(100, 50, 120, 35);
+        addDinner.setBounds(100, 90, 120, 35);
+        addBreakFast.setBackground(Color.CYAN);
+        addLunch.setBackground(Color.CYAN);
+        addDinner.setBackground(Color.CYAN);
+        addBreakFast.setOpaque(true);
+        addLunch.setOpaque(true);
+        addDinner.setOpaque(true);
+
+
         addBreakFast.setActionCommand("add Breakfast");
         addBreakFast.addActionListener(this);
         addLunch.setActionCommand("add Lunch");
@@ -112,9 +181,11 @@ public class GUI implements ActionListener {
         addDinner.setActionCommand("add Dinner");
         addDinner.addActionListener(this);
 
-        panel.add(addBreakFast);
-        panel.add(addLunch);
-        panel.add(addDinner);
+
+        jpanel.add(addBreakFast);
+        jpanel.add(addLunch);
+        jpanel.add(addDinner);
+        jpanel.setLayout(null);
     }
 
 
@@ -128,91 +199,97 @@ public class GUI implements ActionListener {
 
     //EFFECTS: creates the add breakfast frame and panel
     private void addBreakfastFrame() {
-        frame = new JFrame();
-        frame.setSize(500, 500);
+        jframe = new JFrame();
+        jframe.setSize(500, 500);
 
-        panel = new JPanel();
+        jpanel = new JPanel();
+        jpanel.setBackground(Color.black);
 
         frameFields();
         frameLabels();
 
-        JButton addBreakfast = new JButton("Add Breakfast");
+        JButton addBreakfast = new JButton("Add");
 
         addBreakfast.setActionCommand("add breakfast");
         addBreakfast.addActionListener(this);
-        addBreakfast.setBounds(100, 200, 200, 100);
+        addBreakfast.setBounds(200, (300 - 40), 100, 35);
 
-        back.setBounds(100, 200, 200, 100);
+        back.setBounds(200, 300, 100, 35);
 
-        panel.add(title);
-        panel.add(carbohydrates);
-        panel.add(carbohydrates);
-        panel.add(addBreakfast);
-        panel.add(back);
-        panel.setLayout(null);
+        jpanel.add(title);
+        jpanel.add(carbohydrates);
+        jpanel.add(proteins);
+        jpanel.add(fats);
+        jpanel.add(addBreakfast);
+        jpanel.add(back);
+        jpanel.setLayout(null);
 
-        frame.add(panel);
-        frame.setVisible(true);
+        jframe.add(jpanel);
+        jframe.setVisible(true);
 
     }
 
     //EFFECTS: creates the add lunch frame and panel
     private void addLunchFrame() {
-        frame = new JFrame();
-        frame.setSize(500, 500);
+        jframe = new JFrame();
+        jframe.setSize(500, 500);
 
-        panel = new JPanel();
+        jpanel = new JPanel();
+        jpanel.setBackground(Color.black);
 
         frameFields();
         frameLabels();
 
-        JButton addLunch = new JButton("Add Lunch");
+        JButton addLunch = new JButton("Add");
 
         addLunch.setActionCommand("add lunch");
         addLunch.addActionListener(this);
-        addLunch.setBounds(100, 200, 200, 100);
+        addLunch.setBounds(200, (300 - 40), 100, 35);
 
-        back.setBounds(100, 200, 200, 100);
+        back.setBounds(200, 300, 100, 35);
 
-        panel.add(title);
-        panel.add(carbohydrates);
-        panel.add(carbohydrates);
-        panel.add(addLunch);
-        panel.add(back);
-        panel.setLayout(null);
+        jpanel.add(title);
+        jpanel.add(carbohydrates);
+        jpanel.add(proteins);
+        jpanel.add(fats);
+        jpanel.add(addLunch);
+        jpanel.add(back);
+        jpanel.setLayout(null);
 
-        frame.add(panel);
-        frame.setVisible(true);
+        jframe.add(jpanel);
+        jframe.setVisible(true);
 
     }
 
     //EFFECTS: creates the add dinner frame and panel
     private void addDinnerFrame() {
-        frame = new JFrame();
-        frame.setSize(500, 500);
+        jframe = new JFrame();
+        jframe.setSize(500, 500);
 
-        panel = new JPanel();
+        jpanel = new JPanel();
+        jpanel.setBackground(Color.black);
 
         frameFields();
         frameLabels();
 
-        JButton addDinner = new JButton("Add Dinner");
+        JButton addDinner = new JButton("Add");
 
         addDinner.setActionCommand("add dinner");
         addDinner.addActionListener(this);
-        addDinner.setBounds(100, 200, 200, 100);
+        addDinner.setBounds(200, (300 - 40), 100, 35);
 
-        back.setBounds(120, 100, 100, 35);
+        back.setBounds(200, 300, 100, 35);
 
-        panel.add(title);
-        panel.add(carbohydrates);
-        panel.add(carbohydrates);
-        panel.add(addDinner);
-        panel.add(back);
-        panel.setLayout(null);
+        jpanel.add(title);
+        jpanel.add(carbohydrates);
+        jpanel.add(proteins);
+        jpanel.add(fats);
+        jpanel.add(addDinner);
+        jpanel.add(back);
+        jpanel.setLayout(null);
 
-        frame.add(panel);
-        frame.setVisible(true);
+        jframe.add(jpanel);
+        jframe.setVisible(true);
 
     }
 
@@ -224,14 +301,18 @@ public class GUI implements ActionListener {
         JLabel l4 = new JLabel("Fats");
 
         l1.setBounds(50, 10, 100, 35);
-        l2.setBounds(50, 10, 100, 35);
-        l3.setBounds(50, 10, 100, 35);
-        l4.setBounds(50, 10, 100, 35);
+        l2.setBounds(50, 50, 100, 35);
+        l3.setBounds(50, 90, 100, 35);
+        l4.setBounds(50, 130, 100, 35);
+        l1.setForeground(Color.CYAN);
+        l2.setForeground(Color.CYAN);
+        l3.setForeground(Color.CYAN);
+        l4.setForeground(Color.CYAN);
 
-        panel.add(l1);
-        panel.add(l2);
-        panel.add(l3);
-        panel.add(l4);
+        jpanel.add(l1);
+        jpanel.add(l2);
+        jpanel.add(l3);
+        jpanel.add(l4);
 
     }
 
@@ -242,10 +323,10 @@ public class GUI implements ActionListener {
         proteins = new JTextField();
         fats = new JTextField();
 
-        title.setBounds(100, 20, 100, 40);
-        carbohydrates.setBounds(100, 20, 100, 40);
-        proteins.setBounds(100, 20, 100, 40);
-        fats.setBounds(100, 20, 100, 40);
+        title.setBounds(150, 10, 100, 35);
+        carbohydrates.setBounds(150, 50, 100, 35);
+        proteins.setBounds(150, 90, 100, 35);
+        fats.setBounds(150, 130, 100, 35);
     }
 
 
@@ -259,7 +340,7 @@ public class GUI implements ActionListener {
         meal.addBreakfast(food);
 
         JOptionPane.showMessageDialog(null, "Breakfast added successfully !!!",
-                "??", JOptionPane.PLAIN_MESSAGE);
+                "Message", JOptionPane.PLAIN_MESSAGE, imageIcon);
 
     }
 
@@ -273,7 +354,7 @@ public class GUI implements ActionListener {
         meal.addLunch(food);
 
         JOptionPane.showMessageDialog(null, "Breakfast added successfully !!!",
-                "??", JOptionPane.PLAIN_MESSAGE);
+                "Message", JOptionPane.PLAIN_MESSAGE, imageIcon);
 
 
     }
@@ -288,250 +369,227 @@ public class GUI implements ActionListener {
         meal.addDinner(food);
 
         JOptionPane.showMessageDialog(null, "Breakfast added successfully !!!",
-                "??", JOptionPane.PLAIN_MESSAGE);
+                "Message", JOptionPane.PLAIN_MESSAGE, imageIcon);
 
 
     }
 
 
     //EFFECTS: creates remove breakfast frame and panel
-    @SuppressWarnings({"MethodLength", "checkstyle:SuppressWarnings"})
     public void deleteBreakfastFrame() {
-        frame = new JFrame();
-        frame.setSize(500, 500);
+        initializeFrame();
 
-        panel = new JPanel();
-
-        title = new JTextField();
-        carbohydrates = new JTextField();
-        proteins = new JTextField();
-        fats = new JTextField();
-        JLabel label = new JLabel("Title");
-        label.setBounds(50, 10, 100, 35);
-        title.setBounds(120, 30, 103, 33);
-
-        JButton deleteBreakfast = new JButton("Delete Breakfast");
-        deleteBreakfast.setBounds(100, 80, 100, 30);
-        back.setBounds(120, 100, 100, 35);
-        deleteBreakfast.setActionCommand("delete");
+        JButton deleteBreakfast = new JButton("Delete");
+        deleteBreakfast.setBounds(200, (300 - 40), 100, 35);
+        back.setBounds(200, 300, 100, 35);
+        deleteBreakfast.setActionCommand("delete breakfast");
         deleteBreakfast.addActionListener(this);
 
-        panel.add(label);
-        panel.add(title);
-        panel.add(carbohydrates);
-        panel.add(proteins);
-        panel.add(fats);
-        panel.add(deleteBreakfast);
-        panel.add(back);
-        panel.setLayout(null);
 
-        frame.add(panel);
-        frame.setVisible(true);
+        jpanel.add(title);
+        jpanel.add(carbohydrates);
+        jpanel.add(proteins);
+        jpanel.add(fats);
+        jpanel.add(deleteBreakfast);
+        jpanel.add(back);
+        jpanel.setLayout(null);
+
+        jframe.add(jpanel);
+        jframe.setVisible(true);
     }
 
     //EFFECTS: creates remove lunch frame and panel
-    @SuppressWarnings({"MethodLength", "checkstyle:SuppressWarnings"})
     public void deleteLunchFrame() {
-        frame = new JFrame();
-        frame.setSize(500, 500);
+        initializeFrame();
 
-        panel = new JPanel();
-
-        title = new JTextField();
-        carbohydrates = new JTextField();
-        proteins = new JTextField();
-        fats = new JTextField();
-        JLabel label = new JLabel("Title");
-        label.setBounds(50, 10, 100, 35);
-        title.setBounds(120, 30, 103, 33);
-
-        JButton deleteLunch = new JButton("Delete Lunch");
-        deleteLunch.setBounds(100, 80, 100, 30);
-        back.setBounds(120, 100, 100, 35);
-        deleteLunch.setActionCommand("delete");
+        JButton deleteLunch = new JButton("Delete");
+        deleteLunch.setBounds(200, (300 - 40), 100, 35);
+        back.setBounds(200, 300, 100, 35);
+        deleteLunch.setActionCommand("delete lunch");
         deleteLunch.addActionListener(this);
 
-        panel.add(label);
-        panel.add(title);
-        panel.add(carbohydrates);
-        panel.add(proteins);
-        panel.add(fats);
-        panel.add(deleteLunch);
-        panel.add(back);
-        panel.setLayout(null);
+        jpanel.add(title);
+        jpanel.add(carbohydrates);
+        jpanel.add(proteins);
+        jpanel.add(fats);
+        jpanel.add(deleteLunch);
+        jpanel.add(back);
+        jpanel.setLayout(null);
 
-        frame.add(panel);
-        frame.setVisible(true);
+        jframe.add(jpanel);
+        jframe.setVisible(true);
     }
 
-    //EFFECTS: creates remove dinner frame and panel
-    @SuppressWarnings({"MethodLength", "checkstyle:SuppressWarnings"})
-    public void deleteDinnerFrame() {
-        frame = new JFrame();
-        frame.setSize(500, 500);
 
-        panel = new JPanel();
+    //EFFECTS: creates remove dinner frame and panel
+    public void deleteDinnerFrame() {
+        initializeFrame();
+
+        JButton deleteDinner = new JButton("Delete");
+        deleteDinner.setBounds(200, (300 - 40), 100, 35);
+        back.setBounds(200, 300, 100, 35);
+        deleteDinner.setActionCommand("delete dinner");
+        deleteDinner.addActionListener(this);
+
+        jpanel.add(title);
+        jpanel.add(carbohydrates);
+        jpanel.add(proteins);
+        jpanel.add(fats);
+        jpanel.add(deleteDinner);
+        jpanel.add(back);
+        jpanel.setLayout(null);
+
+        jframe.add(jpanel);
+        jframe.setVisible(true);
+    }
+
+
+    private void initializeFrame() {
+
+        jframe = new JFrame();
+        jframe.setSize(500, 500);
+
+        jpanel = new JPanel();
+        jpanel.setBackground(Color.black);
 
         title = new JTextField();
         carbohydrates = new JTextField();
         proteins = new JTextField();
         fats = new JTextField();
         JLabel label = new JLabel("Title");
-        label.setBounds(50, 10, 100, 35);
-        title.setBounds(120, 30, 103, 33);
+        label.setBounds(100, 10, 100, 35);
+        title.setBounds(130, 10, 100, 35);
+        label.setForeground(Color.CYAN);
 
-        JButton deleteDinner = new JButton("Delete Dinner");
-        deleteDinner.setBounds(100, 80, 100, 30);
-        back.setBounds(120, 100, 100, 35);
-        deleteDinner.setActionCommand("delete");
-        deleteDinner.addActionListener(this);
+        jpanel.add(label);
 
-        panel.add(label);
-        panel.add(title);
-        panel.add(carbohydrates);
-        panel.add(proteins);
-        panel.add(fats);
-        panel.add(deleteDinner);
-        panel.add(back);
-        panel.setLayout(null);
 
-        frame.add(panel);
-        frame.setVisible(true);
     }
 
     //MODIFIES: meal
     //EFFECTS: delete breakfast food with the given title
     private void deleteBreakfast() {
         if (!meal.containBreakfastFood(title.getText())) {
-            JOptionPane.showMessageDialog(null, "Food not in the list", "??",
-                    JOptionPane.PLAIN_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Food not in the list", "Message",
+                    JOptionPane.PLAIN_MESSAGE, imageIcon);
         } else {
             for (Food f : meal.getBreakfastList()) {
                 if (f.getTitle().equals(title.getText())) {
                     meal.getBreakfastList().remove(f);
+                    JOptionPane.showMessageDialog(null, "Food deleted", "Message",
+                            JOptionPane.PLAIN_MESSAGE, imageIcon);
                 }
             }
-            if (!meal.containBreakfastFood(title.getText())) {
-                JOptionPane.showMessageDialog(null, "Food deleted", "??",
-                        JOptionPane.PLAIN_MESSAGE);
-            } else {
-                JOptionPane.showMessageDialog(null, "Couldn't delete", "??",
-                        JOptionPane.PLAIN_MESSAGE);
-            }
+
         }
     }
 
     //MODIFIES: meal
     //EFFECTS: delete breakfast food with the given title
     private void deleteLunch() {
-        if (!meal.containBreakfastFood(title.getText())) {
-            JOptionPane.showMessageDialog(null, "Food not in the list", "??",
+        if (!meal.containLunchFood(title.getText())) {
+            JOptionPane.showMessageDialog(null, "Food not in the list", "Message",
                     JOptionPane.PLAIN_MESSAGE);
         } else {
             for (Food f : meal.getLunchList()) {
                 if (f.getTitle().equals(title.getText())) {
-                    meal.getBreakfastList().remove(f);
+                    meal.getLunchList().remove(f);
+                    JOptionPane.showMessageDialog(null, "Food deleted", "Message",
+                            JOptionPane.PLAIN_MESSAGE, imageIcon);
                 }
             }
-            if (!meal.containLunchFood(title.getText())) {
-                JOptionPane.showMessageDialog(null, "Food deleted", "??",
-                        JOptionPane.PLAIN_MESSAGE);
-            } else {
-                JOptionPane.showMessageDialog(null, "Couldn't delete", "??",
-                        JOptionPane.PLAIN_MESSAGE);
-            }
+
         }
     }
 
     //MODIFIES: meal
     //EFFECTS: delete dinner food with the given title
     private void deleteDinner() {
-        if (!meal.containBreakfastFood(title.getText())) {
-            JOptionPane.showMessageDialog(null, "Food not in the list", "??",
+        if (!meal.containDinnerFood(title.getText())) {
+            JOptionPane.showMessageDialog(null, "Food not in the list !!", "Message",
                     JOptionPane.PLAIN_MESSAGE);
         } else {
             for (Food f : meal.getDinnerList()) {
                 if (f.getTitle().equals(title.getText())) {
                     meal.getDinnerList().remove(f);
+                    JOptionPane.showMessageDialog(null, "Food deleted !!", "Message",
+                            JOptionPane.PLAIN_MESSAGE, imageIcon);
                 }
             }
-            if (!meal.containDinnerFood(title.getText())) {
-                JOptionPane.showMessageDialog(null, "Food deleted", "??",
-                        JOptionPane.PLAIN_MESSAGE);
-            } else {
-                JOptionPane.showMessageDialog(null, "Couldn't delete", "??",
-                        JOptionPane.PLAIN_MESSAGE);
-            }
+
         }
     }
 
 
     //EFFECTS: creates the check breakfast frame and panel
     public void checkBreakfast() {
-        frame = new JFrame();
-        panel = new JPanel();
+        jframe = new JFrame();
+        jpanel = new JPanel();
+        jpanel.setBackground(Color.black);
         String str;
         List<String> formatted = new ArrayList<>();
         if (meal.getBreakfastList() != null) {
             for (Food f : meal.getBreakfastList()) {
-                str = "Title : " + f.getTitle() + " " + "Carbohydrates : " + f.getCarbs() + "Proteins :"
-                        + f.getProtein() + "Fats :" + f.getFats();
+                str = "Title : " + f.getTitle() + " " + " Carbohydrates : " + f.getCarbs() + " Proteins : "
+                        + f.getProtein() + " Fats : " + f.getFats();
                 formatted.add(str);
             }
         }
 
         JList<Object> j = new JList<>(formatted.toArray());
-        panel.add(j);
-        panel.add(BorderLayout.SOUTH, back);
-        frame.add(panel);
-        frame.pack();
-        frame.setVisible(true);
+        jpanel.add(j);
+        jpanel.add(BorderLayout.SOUTH, back);
+        jframe.add(jpanel);
+        jframe.pack();
+        jframe.setVisible(true);
     }
 
 
     //EFFECTS: creates the check lunch frame and panel
     public void checkLunch() {
-        frame = new JFrame();
-        panel = new JPanel();
+        jframe = new JFrame();
+        jpanel = new JPanel();
+        jpanel.setBackground(Color.black);
         String str;
         List<String> formatted = new ArrayList<>();
         if (meal.getLunchList() != null) {
             for (Food f : meal.getLunchList()) {
-                str = "Title : " + f.getTitle() + " " + "Carbohydrates : " + f.getCarbs() + "Proteins :"
-                        + f.getProtein() + "Fats :" + f.getFats();
+                str = "Title : " + f.getTitle() + " Carbohydrates : " + f.getCarbs() + " Proteins : "
+                        + f.getProtein() + " Fats : " + f.getFats();
                 formatted.add(str);
             }
         }
 
         JList<Object> j = new JList<>(formatted.toArray());
-        panel.add(j);
-        panel.add(BorderLayout.SOUTH, back);
-        frame.add(panel);
-        frame.pack();
-        frame.setVisible(true);
+        jpanel.add(j);
+        jpanel.add(BorderLayout.SOUTH, back);
+        jframe.add(jpanel);
+        jframe.pack();
+        jframe.setVisible(true);
     }
 
 
     //EFFECTS: creates the check dinner frame and panel
     public void checkDinner() {
-        frame = new JFrame();
-        panel = new JPanel();
+        jframe = new JFrame();
+        jpanel = new JPanel();
+        jpanel.setBackground(Color.black);
         String str;
         List<String> formatted = new ArrayList<>();
         if (meal.getDinnerList() != null) {
             for (Food f : meal.getDinnerList()) {
-                str = "Title : " + f.getTitle() + " " + "Carbohydrates : " + f.getCarbs() + "Proteins :"
+                str = "Title : " + f.getTitle() + " " + " Carbohydrates : " + f.getCarbs() + "Proteins :"
                         + f.getProtein() + "Fats :" + f.getFats();
                 formatted.add(str);
             }
         }
 
         JList<Object> j = new JList<>(formatted.toArray());
-        panel.add(j);
-        panel.add(BorderLayout.SOUTH, back);
-        frame.add(panel);
-        frame.pack();
-        frame.setVisible(true);
+        jpanel.add(j);
+        jpanel.add(BorderLayout.SOUTH, back);
+        jframe.add(jpanel);
+        jframe.pack();
+        jframe.setVisible(true);
     }
 
     //EFFECTS: save a day's meal
@@ -541,11 +599,11 @@ public class GUI implements ActionListener {
             jsonWriter.write(meal);
             jsonWriter.close();
 
-            System.out.println("Saved " + meal + " to " + JSON_STORE);
+            System.out.println(" Saved " + meal + " to " + JSON_STORE);
 
         } catch (FileNotFoundException e) {
 
-            System.out.println("Unable to write to file: " + JSON_STORE);
+            System.out.println(" Unable to write to file: " + JSON_STORE);
         }
 
     }
@@ -565,8 +623,6 @@ public class GUI implements ActionListener {
 
 
     @Override
-
-    @SuppressWarnings({"MethodLength", "checkstyle:SuppressWarnings"})
     //EFFECTS: message to all the action listeners
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("add Breakfast")) {
@@ -589,7 +645,14 @@ public class GUI implements ActionListener {
             deleteDinnerFrame();
         } else if (e.getActionCommand().equals("delete breakfast")) {
             deleteBreakfast();
-        } else if (e.getActionCommand().equals("delete lunch")) {
+        } else {
+            actionPerformedContinued(e);
+        }
+    }
+
+    //EFFECTS: actionPerformed function continued/message to all the action listeners
+    private void actionPerformedContinued(ActionEvent e) {
+        if (e.getActionCommand().equals("delete lunch")) {
             deleteLunch();
         } else if (e.getActionCommand().equals("delete dinner")) {
             deleteDinner();
@@ -598,7 +661,7 @@ public class GUI implements ActionListener {
         } else if (e.getActionCommand().equals("save")) {
             saveMeal();
         } else if (e.getActionCommand().equals("back")) {
-            frame.dispose();
+            jframe.dispose();
         } else if (e.getActionCommand().equals("check Breakfast")) {
             checkBreakfast();
         } else if (e.getActionCommand().equals("check Lunch")) {
