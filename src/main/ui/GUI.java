@@ -34,6 +34,10 @@ public class GUI implements ActionListener {
 
 
     //EFFECTS: constructs panel, frame and buttons for the GUI
+     /*
+      SOURCE : shorturl.at/fxKN9
+      Used to resize the imageIcon
+     */
     public GUI() {
         meal = new Meal();
         jpanel = new JPanel();
@@ -353,7 +357,7 @@ public class GUI implements ActionListener {
         Food food = new Food(title.getText(), c, p, f);
         meal.addLunch(food);
 
-        JOptionPane.showMessageDialog(null, "Breakfast added successfully !!!",
+        JOptionPane.showMessageDialog(null, "Lunch added successfully !!!",
                 "Message", JOptionPane.PLAIN_MESSAGE, imageIcon);
 
 
@@ -368,7 +372,7 @@ public class GUI implements ActionListener {
         Food food = new Food(title.getText(), c, p, f);
         meal.addDinner(food);
 
-        JOptionPane.showMessageDialog(null, "Breakfast added successfully !!!",
+        JOptionPane.showMessageDialog(null, "Dinner added successfully !!!",
                 "Message", JOptionPane.PLAIN_MESSAGE, imageIcon);
 
 
