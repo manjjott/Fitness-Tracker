@@ -444,6 +444,7 @@ public class GUI implements ActionListener {
     }
 
 
+    //EFFECTS: initialize delete frame/s
     private void initializeFrame() {
 
         jframe = new JFrame();
