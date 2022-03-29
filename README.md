@@ -25,3 +25,9 @@ people to track their daily intake on the daily basis. This project interests me
 </ol>
 
 
+## **Phase 4 : Task 3
+One thing that I would like to refactor is doing exception handling in my project. For example, a user may add similar
+food but with different nutrition value in that case it must give an exception. Also, one thing I would like to improve 
+is that user must be able to burn calories with having an additional exercise class.
+
+
