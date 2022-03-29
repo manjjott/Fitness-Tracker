@@ -25,30 +25,35 @@ public class Meal implements Writable {
     //EFFECTS: add the given food in the List<Food> breakfast;
     public void addBreakfast(Food food) {
         breakfast.add(food);
+        EventLog.getInstance().logEvent(new Event("Breakfast Added."));
     }
 
     //MODIFIES: this
     //EFFECTS: add the given food in the List<Food> lunch;
     public void addLunch(Food food) {
         lunch.add(food);
+        EventLog.getInstance().logEvent(new Event("Lunch Added."));
     }
 
     //MODIFIES: this
     //EFFECTS: add the given food in the List<Food> dinner
     public void addDinner(Food food) {
         dinner.add(food);
+        EventLog.getInstance().logEvent(new Event("Dinner Added."));
     }
 
     //MODIFIES: this
     //EFFECTS: delete the given food from the breakfast
     public void deleteBreakfast(Food food) {
         breakfast.remove(food);
+        EventLog.getInstance().logEvent(new Event("Delete Breakfast."));
     }
 
     //MODIFIES: this
     //EFFECTS: delete the given food from the lunch
     public void deleteLunch(Food food) {
         lunch.remove(food);
+        EventLog.getInstance().logEvent(new Event("Delete Lunch."));
 
     }
 
@@ -56,6 +61,7 @@ public class Meal implements Writable {
     //EFFECTS: delete the given food from the dinner
     public void deleteDinner(Food food) {
         dinner.remove(food);
+        EventLog.getInstance().logEvent(new Event("Delete Dinner."));
     }
 
     //EFFECTS: return the total calories consumed in the day combined from breakfast + lunch + dinner

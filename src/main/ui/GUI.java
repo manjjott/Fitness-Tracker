@@ -1,5 +1,7 @@
 package ui;
 
+import model.Event;
+import model.EventLog;
 import model.Food;
 import model.Meal;
 import persistence.JsonReader;
@@ -10,6 +12,8 @@ import javax.swing.JFrame;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -61,8 +65,7 @@ public class GUI implements ActionListener {
         Image image = imageIcon.getImage();
         Image img = image.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
         imageIcon = new ImageIcon(img);
-
-
+        jframeWindowListener();
     }
 
     //EFFECTS: gives the intro image on the introductory panel
@@ -604,7 +607,8 @@ public class GUI implements ActionListener {
             jsonWriter.write(meal);
             jsonWriter.close();
 
-            System.out.println(" Saved " + meal + " to " + JSON_STORE);
+            System.out.println("Saved " + meal + " to " + JSON_STORE);
+            EventLog.getInstance().logEvent(new Event("Saved Meal."));
 
         } catch (FileNotFoundException e) {
 
@@ -619,6 +623,7 @@ public class GUI implements ActionListener {
             meal = jsonReader.read();
 
             System.out.println("Loaded " + meal + " from " + JSON_STORE);
+            EventLog.getInstance().logEvent(new Event("Loaded Meal."));
 
         } catch (IOException e) {
 
@@ -673,6 +678,27 @@ public class GUI implements ActionListener {
             checkLunch();
         } else if (e.getActionCommand().equals("check Dinner")) {
             checkDinner();
+        }
+    }
+
+    //EFFECTS: prints logged  when program exited
+    public void jframeWindowListener() {
+
+        jframe.addWindowListener(new WindowAdapter() {
+
+            public void windowClosing(WindowEvent e) {
+                logPrint(EventLog.getInstance());
+                System.exit(0);
+
+            }
+        });
+
+    }
+
+    //EFFECTS: prints events logged
+    private void logPrint(EventLog instance) {
+        for (Event next : instance) {
+            System.out.println(next.toString());
         }
     }
 
